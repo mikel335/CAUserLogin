@@ -9,13 +9,6 @@ public class LoginInteractor implements LoginInputBoundary {
     private final LoginUserDataAccessInterface userDataAccessObject;
     private final LoginOutputBoundary loginPresenter;
 
-
-
-    //User user = userDataAccessObject.get(loginInputData.getUsername());
-
-    //LoginOutputData loginOutputData = new LoginOutputData(user.getName(), false);
-    //loginPresenter.prepareSuccessView(loginOutputData);
-
     public LoginInteractor(LoginUserDataAccessInterface userDataAccessInterface,
                            LoginOutputBoundary loginOutputBoundary) {
         this.userDataAccessObject = userDataAccessInterface;
@@ -26,13 +19,6 @@ public class LoginInteractor implements LoginInputBoundary {
     public void execute(LoginInputData loginInputData) {
         final String username = loginInputData.getUsername();
         final String password = loginInputData.getPassword();
-
-//        userDataAccessObject.setCurrentUser(user.getName());
-
-//        User user = userDataAccessObject.get(loginInputData.getUsername());
-//
-//        LoginOutputData loginOutputData = new LoginOutputData(user.getName(), false);
-//        loginPresenter.prepareSuccessView(loginOutputData);
 
         if (!userDataAccessObject.existsByName(username)) {
             loginPresenter.prepareFailView(username + ": Account does not exist.");
